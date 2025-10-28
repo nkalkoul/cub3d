@@ -6,11 +6,13 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 06:00:41 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/28 11:14:37 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:08:44 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+//debut du pars des couleur et lancer le remplissement de la struct color
 
 void	ft_fill_color(char *str, t_alldata *data)
 {
@@ -39,43 +41,23 @@ void	ft_fill_color(char *str, t_alldata *data)
 		ft_fill_floor(str, data);
 }
 
-void	ft_check_extension(char *str, t_alldata *data)
-{
-	char	*cmp;
+//remplir la struct param des path des texture
 
-	if (ft_strlen(str) < 4)
-		ft_free_and_exit(data, "no good extension file .xpm");
-	cmp = ft_strrchr(str, '.');
-	if (!cmp || ft_strcmp(cmp, ".xpm"))
-		ft_free_and_exit(data, "no good extension <file>.xpm");
-
-}
-
-void	ft_fill_xpmfile_param(char *str, t_alldata *data, int s)
+void	ft_fill_texturefile_param(char *str, t_alldata *data, int s)
 {
 	if (s == 1)
-	{
 		data->params.no = ft_substr(str, 0, mini_len(str, '\n'));
-		ft_check_extension(data->params.no, data);
-	}
 	else if (s == 2)
-	{
 		data->params.we = ft_substr(str, 0, mini_len(str, '\n'));
-		ft_check_extension(data->params.we, data);
-	}
 	else if (s == 3)
-	{
 		data->params.so = ft_substr(str, 0, mini_len(str, '\n'));
-		ft_check_extension(data->params.so, data);
-	}
 	else if (s == 4)
-	{
 		data->params.ea = ft_substr(str, 0, mini_len(str, '\n'));
-		ft_check_extension(data->params.ea, data);
-	}
 }
 
-void	ft_check_xpm(char *str, t_alldata *data)
+// un debut de verif si le path est qlq peu correct
+
+void	ft_check_texture(char *str, t_alldata *data)
 {
 	int	symbol;
 	int	i;
@@ -83,7 +65,7 @@ void	ft_check_xpm(char *str, t_alldata *data)
 	i = 0;
 	symbol = whatisthedir(str);
 	if (!ft_isspace(str[2]))
-		return (ft_free_and_exit(data, "Bad indentation in xpm file def"));
+		return (ft_free_and_exit(data, "Bad indentation in texture file def"));
 	str = &str[2];
 	while (str && !ft_isprint(str[0]))
 	{
@@ -93,18 +75,20 @@ void	ft_check_xpm(char *str, t_alldata *data)
 	while (str && str[i] != '\n')
 	{
 		if (!ft_isprint(str[i]))
-			ft_free_and_exit(data, "no valid xpm files");
+			ft_free_and_exit(data, "no valid texture files");
 		i++;
 	}
-	ft_fill_xpmfile_param(str, data, symbol);
+	ft_fill_texturefile_param(str, data, symbol);
 }
+
+//lis mgl c est simple la
 
 void	ft_attribute_params(char *str, t_alldata *data)
 {
 	if (is_color_param(str))
 		ft_fill_color(str, data);
-	else if (is_xpmfile_param(str))
-		ft_check_xpm(str, data);
+	else if (is_texturefile_param(str))
+		ft_check_texture(str, data);
 	else
 		ft_free_and_exit(data, "We need definition of param for continue");
 }

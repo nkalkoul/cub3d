@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:06:12 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/28 11:39:49 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:30:21 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	ft_start_parsing(t_alldata *data)
 	char	*cmp;
 
 	if (ft_strlen(data->filename) < 4)
-		return (ft_printf(1,
+		return (ft_printf(2,
 				"Error\nfile map must be in form <map>.cub\n"), false);
 	cmp = ft_strrchr(data->filename, '.');
 	if (!cmp || ft_strcmp(cmp, ".cub"))
-		return (ft_printf(1,
+		return (ft_printf(2,
 				"Error\nfile map must be in form <map>.cub\n"), false);
 	if (!ft_fill_data(data))
 		return (false);
@@ -36,8 +36,7 @@ int	ft_fill_data(t_alldata *data)
 {
 	data->fd = open(data->filename, O_RDONLY);
 	if (data->fd == -1)
-		return (ft_printf(1,
-				"Error\nare you sure <%s> exist ?\n", data->filename), false);
+		return (perror("Error"), false);
 	if (!ft_file_content(data))
 		return (ft_printf(1, "Error malloc"), false);
 	ft_parse_content(data);
@@ -66,6 +65,11 @@ int	ft_file_content(t_alldata *data)
 	return (true);
 }
 
+void	ft_parse_map(t_alldata *data)
+{
+	char **
+}
+
 // skip les \n et gerer le parsing/remplissage de data.param et copier la map
 
 void	ft_parse_content(t_alldata *data)
@@ -92,10 +96,5 @@ void	ft_parse_content(t_alldata *data)
 	data->map = ft_split(str, '\n');
 	if (!data->map)
 		ft_free_and_exit(data, "map error copy");
-	i = 0;
-	while (data->map[i])
-	{
-		printf("%s$\n", data->map[i]);
-		i++;
-	}
+	ft_parse_map(data;)
 }

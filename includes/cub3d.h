@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/28 10:45:54 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:30:43 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_check_formatc(char *str, t_alldata *data);
 //---------------UTILS--------------------
 
 int		is_color_param(char *str);
-int		is_xpmfile_param(char *str);
+int		is_texturefile_param(char *str);
 int		whatisthedir(char *str);
 char	*ft_skip(char *str, char c);
 char	*ft_skipbigtree(char *str);

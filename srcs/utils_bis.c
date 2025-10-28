@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 06:28:30 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/28 10:34:35 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:08:44 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	whatisthedir(char *str)
 	return (false);
 }
 
-int	is_xpmfile_param(char *str)
+int	is_texturefile_param(char *str)
 {
 	if (mini_comp(str, 'N', 'O'))
 		return (true);
