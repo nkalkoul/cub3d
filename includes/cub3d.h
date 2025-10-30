@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/28 16:30:43 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/10/30 07:45:44 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ typedef struct s_alldata
 	char		*filename;
 	char		*filecontent;
 	char		**map;
+	char		**copy;
+	int			py;
+	int			px;
+	char		dir;
+	int			count;
+	int			max_height;
+	int			max_width;
 	t_mlx		mlx;
 	t_params	params;
 
@@ -60,6 +67,9 @@ void	ft_fill_color(char *str, t_alldata *data);
 void	ft_fill_ceiling(char *str, t_alldata *data);
 void	ft_fill_floor(char *str, t_alldata *data);
 void	ft_check_formatc(char *str, t_alldata *data);
+void	ft_parse_map(t_alldata *data);
+void	ft_checkopen(t_alldata *data);
+
 
 //---------------UTILS--------------------
 
@@ -71,5 +81,6 @@ char	*ft_skipbigtree(char *str);
 void	ft_free_and_exit(t_alldata *data, char *str);
 int		mini_comp(char *str, char a, char b);
 int		mini_len(char *str, char c);
+int		is_validcara(char c);
 
 #endif

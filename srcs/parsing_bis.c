@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 06:00:41 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/28 15:08:44 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/10/28 19:42:22 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,5 @@ void	ft_attribute_params(char *str, t_alldata *data)
 	else if (is_texturefile_param(str))
 		ft_check_texture(str, data);
 	else
-		ft_free_and_exit(data, "We need definition of param for continue");
+		ft_free_and_exit(data, "We need definition of 6 param for continue");
 }

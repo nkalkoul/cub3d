@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:06:12 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/28 16:30:21 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/10/30 09:12:28 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,36 @@ int	ft_file_content(t_alldata *data)
 	return (true);
 }
 
-void	ft_parse_map(t_alldata *data)
-{
-	char **
-}
-
 // skip les \n et gerer le parsing/remplissage de data.param et copier la map
+void	putmap(t_alldata *data, char *str)
+{
+	int		i;
+	int		c;
+
+	i = 0;
+	c = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			c++;
+		i++;
+	}
+	i = 0;
+	data->map = malloc(sizeof(char *) * (c + 1));
+	if (!data->map)
+		ft_free_and_exit(data, "Malloc failed");
+	ft_memset(data->map, 0, c + 1);
+	while (i < c)
+	{
+		printf("i = %d\n", i);
+		if (str[0] == '\n')
+			ft_free_and_exit(data, "empty line in map");
+		data->map[i] = ft_substr(str, 0, mini_len(str, '\n'));
+		str += mini_len(str, '\n') + 1;
+		i++;
+		data->map[i] = 0;
+	}
+}
 
 void	ft_parse_content(t_alldata *data)
 {
@@ -93,8 +117,13 @@ void	ft_parse_content(t_alldata *data)
 		i++;
 	}
 	str = ft_skip(str, '\n');
-	data->map = ft_split(str, '\n');
+	putmap(data, str);
 	if (!data->map)
 		ft_free_and_exit(data, "map error copy");
-	ft_parse_map(data;)
+	i = 0;
+	while (data->map[i])
+	{
+		printf("$%s$\n", data->map[i]);
+		i++;
+	}
 }

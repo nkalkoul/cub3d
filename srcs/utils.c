@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 01:57:58 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/28 11:39:18 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/10/30 06:54:30 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	ft_free_and_exit(t_alldata *data, char *str)
 	freeptr(data->params.so);
 	freeptr(data->params.we);
 	free_double(data->map);
+	free_double(data->copy);
 	exit(1);
 }
