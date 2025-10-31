@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/30 07:45:44 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/01 00:17:00 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_color
 
 typedef struct s_params
 {
-	char	*no;
+	char	*no; // les chemin vers les images en fct de leur direction(mur nor mur sud etc)
 	char	*so;
 	char	*ea;
 	char	*we;
@@ -45,15 +45,14 @@ typedef struct s_alldata
 	char		*filecontent;
 	char		**map;
 	char		**copy;
-	int			py;
-	int			px;
-	char		dir;
+	int			py;			//position y du joueur (map[y][x])
+	int			px;			// position x du joueur
+	char		dir;		// N S E ou W
 	int			count;
 	int			max_height;
 	int			max_width;
 	t_mlx		mlx;
-	t_params	params;
-
+	t_params	params;		// parametre (couleur r,g,b et image)
 }	t_alldata;
 
 // -------------PARSING------------------

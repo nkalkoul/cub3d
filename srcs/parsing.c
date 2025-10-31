@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:06:12 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/30 09:12:28 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/10/31 21:02:05 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,25 @@ void	putmap(t_alldata *data, char *str)
 		i++;
 	}
 	i = 0;
-	data->map = malloc(sizeof(char *) * (c + 1));
+	data->map = malloc(sizeof(char *) * (c + 2));
 	if (!data->map)
 		ft_free_and_exit(data, "Malloc failed");
 	ft_memset(data->map, 0, c + 1);
-	while (i < c)
+	while (i <= c)
 	{
 		printf("i = %d\n", i);
 		if (str[0] == '\n')
 			ft_free_and_exit(data, "empty line in map");
-		data->map[i] = ft_substr(str, 0, mini_len(str, '\n'));
-		str += mini_len(str, '\n') + 1;
+		if (i < c)
+		{
+			data->map[i] = ft_substr(str, 0, mini_len(str, '\n'));
+			str += mini_len(str, '\n') + 1;
+		}
+		else
+			data->map[i] = ft_substr(str, 0, ft_strlen(str));
 		i++;
-		data->map[i] = 0;
 	}
+	data->map[i] = 0;
 }
 
 void	ft_parse_content(t_alldata *data)

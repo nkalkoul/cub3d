@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 21:22:50 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/30 08:42:44 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/10/31 20:13:35 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,6 @@ void	ft_check_cara(t_alldata *data)
 	char	*start;
 
 	i = 0;
-	while (data->map[i])
-	{
-		printf("$%s$\n", data->map[i]);
-		i++;
-	}
 	start = ft_strdup("NESW");
 	i = 0;
 	while (data->map[i])
