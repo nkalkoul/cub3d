@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/28 01:57:58 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/02 20:39:52 by nkalkoul         ###   ########.fr       */
+/*   Created: 2025/11/02 18:55:54 by nkalkoul          #+#    #+#             */
+/*   Updated: 2025/11/02 19:15:26 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	freeptr(void *ptr)
+void	ft_init_mlx(t_alldata *data)
 {
-	if (ptr)
-		free(ptr);
-}
-
-
-
-void	ft_free_and_exit(t_alldata *data, char *str)
-{
-	if (str)
-		ft_printf(1, "Error\n%s\n", str);
-	freeptr(data->filecontent);
-	freeptr(data->params.ea);
-	freeptr(data->params.no);
-	freeptr(data->params.so);
-	freeptr(data->params.we);
-	freeptr(data->mlx.init);
-	free_double(data->map);
-	free_double(data->copy);
-	exit(1);
+	data->mlx.init = mlx_init();
+	if (!data->mlx.init)
+		ft_free_and_exit(data, "initialisation mlx error");
 }

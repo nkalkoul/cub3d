@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:06:12 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/31 21:02:05 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/02 17:43:18 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,10 @@ void	putmap(t_alldata *data, char *str)
 	ft_memset(data->map, 0, c + 1);
 	while (i <= c)
 	{
-		printf("i = %d\n", i);
 		if (str[0] == '\n')
 			ft_free_and_exit(data, "empty line in map");
-		if (i < c)
-		{
-			data->map[i] = ft_substr(str, 0, mini_len(str, '\n'));
-			str += mini_len(str, '\n') + 1;
-		}
-		else
-			data->map[i] = ft_substr(str, 0, ft_strlen(str));
+		data->map[i] = ft_substr(str, 0, mini_len(str, '\n'));
+		str += mini_len(str, '\n') + 1;
 		i++;
 	}
 	data->map[i] = 0;
@@ -121,14 +115,13 @@ void	ft_parse_content(t_alldata *data)
 			str++;
 		i++;
 	}
+	printf("%#010x, %#010x\n\n", data->params.ceiling.final_color,
+		data->params.floor.final_color);
+	printf("\n texture = == |%s|, |%s|, |%s|, |%s|\n", data->params.ea, data->params.no,
+		data->params.so, data->params.we);
 	str = ft_skip(str, '\n');
 	putmap(data, str);
 	if (!data->map)
 		ft_free_and_exit(data, "map error copy");
 	i = 0;
-	while (data->map[i])
-	{
-		printf("$%s$\n", data->map[i]);
-		i++;
-	}
 }

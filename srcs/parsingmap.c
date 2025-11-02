@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsingmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 21:22:50 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/02 02:58:34 by nassuto          ###   ########.fr       */
+/*   Updated: 2025/11/02 19:04:27 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_max_height(t_alldata *data)
 	count = 0;
 	while (map[i])
 	{
-		if (count < ft_strlen(map[i]))
-			count = ft_strlen(map[i]);
+		if (count < (int)ft_strlen(map[i]))
+			count = (int)ft_strlen(map[i]);
 		i++;
 	}
 	data->max_height = i;
@@ -43,7 +43,6 @@ int	ft_checkstring(t_alldata *data, int i)
 int	ft_checkstring2(t_alldata *data, int i, char *start)
 {
 	int		o;
-	char	**map;
 	int		j;
 
 	j = 0;

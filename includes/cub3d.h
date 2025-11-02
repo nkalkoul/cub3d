@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/02 03:24:25 by nassuto          ###   ########.fr       */
+/*   Updated: 2025/11/02 19:14:37 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,19 @@
 
 # include "../libft/libft.h"
 # include <stdbool.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 
+# define HEIGH 1200
+# define WIDTH 900
 typedef struct s_mlx
 {
 	void	*init;
+	void	*n;
+	void	*s;
+	void	*e;
+	void	*w;
+	void	*wind;
 }	t_mlx;
 
 typedef struct s_color

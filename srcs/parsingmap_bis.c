@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsingmap_bis.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 06:37:01 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/02 02:56:59 by nassuto          ###   ########.fr       */
+/*   Updated: 2025/11/02 17:34:31 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	ft_affichemap(t_alldata *data)
 		i++;
 	}
 	i = 0;
+	printf("\ncopy == \n");
 	while (data->copy[i])
 	{
 		printf("$%s$\n", data->copy[i]);

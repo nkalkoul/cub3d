@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 06:28:30 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/30 02:07:16 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/02 17:32:01 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	mini_len(char *str, char c)
 	int	i;
 
 	i = 0;
-	while (str && str[i] != c)
+	while (str && str[i] && str[i] != c)
 		i++;
 	return (i);
 }
