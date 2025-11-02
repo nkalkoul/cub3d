@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/01 00:17:00 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/02 03:24:25 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_color
 	int	r;
 	int	g;
 	int	b;
+	int	final_color;
 }	t_color;
 
 typedef struct s_params
@@ -81,5 +82,6 @@ void	ft_free_and_exit(t_alldata *data, char *str);
 int		mini_comp(char *str, char a, char b);
 int		mini_len(char *str, char c);
 int		is_validcara(char c);
+int		get_color(t_color c);
 
 #endif

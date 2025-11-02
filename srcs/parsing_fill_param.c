@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_fill_param.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 07:40:23 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/28 10:07:01 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/02 03:26:31 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_fill_ceiling(char *str, t_alldata *data)
 	data->params.ceiling.g = ft_atoi(str);
 	str += mini_len(str, ',') + 1;
 	data->params.ceiling.b = ft_atoi(str);
+	data->params.ceiling.final_color = get_color(data->params.ceiling);
 }
 
 void	ft_fill_floor(char *str, t_alldata *data)
@@ -55,4 +56,5 @@ void	ft_fill_floor(char *str, t_alldata *data)
 	data->params.floor.g = ft_atoi(str);
 	str += mini_len(str, ',') + 1;
 	data->params.floor.b = ft_atoi(str);
+	data->params.floor.final_color = get_color(data->params.floor);
 }

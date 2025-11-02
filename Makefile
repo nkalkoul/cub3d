@@ -1,5 +1,5 @@
 SRCS = $(addprefix srcs/, parsing.c main.c utils.c utils_bis.c parsing_bis.c parsing_fill_param.c\
-		parsingmap.c parsingmap_bis.c)
+		parsingmap.c parsingmap_bis.c utils_tres.c)
 CC = cc -g3 #-Wall -Werror -Wextra -g3
 DIRLIB = ./libft
 

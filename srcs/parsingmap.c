@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsingmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 21:22:50 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/31 20:13:35 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/02 02:58:34 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_checkstring2(t_alldata *data, int i, char *start)
 			{
 				data->count++;
 				data->dir = start[o];
-				data->map[i][j] = 'P';
+				data->map[i][j] = '0';
 				data->px = j;
 				data->py = i;
 			}
