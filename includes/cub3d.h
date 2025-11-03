@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/03 16:10:25 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/03 19:36:01 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../minilibx-linux/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include <math.h>
 # include <stdbool.h>
 
 # define HEIGHT 1200
@@ -59,15 +60,37 @@ typedef struct s_params
 
 typedef struct s_raycasting
 {
+	// position of the player
 	double			posX;
 	double			posY;
 	double			dirX;
 	double			dirY;
+	double			origDirX;
+	double			origDirY;
 	double			planeX;
 	double			planeY;
+	// time
 	double			time;
 	double			oldTime;
+	// raycasting variables
+	int				mapX;
+	int				mapY;
+	double			sideDistX;
+	double			sideDistY;
+	double			deltaDistX;
+	double			deltaDistY;
+	double			perpWallDist;
+	int				stepX;
+	int				stepY;
+	int				hit;
+	int				side;
 }					t_raycasting;
+
+typedef struct s_vector
+{
+	double			x;
+	double			y;
+}					t_vector;
 
 typedef struct s_alldata
 {
@@ -123,6 +146,9 @@ void				ft_put_pixel(t_mlx *mlx, int x, int y, int color);
 void				ft_start_mlx(t_alldata *data);
 int					exec_general(t_alldata *data);
 void				init_raycasting(t_alldata *data);
+void				init_ray(t_alldata *data);
 int					render(t_alldata *data);
+t_vector			calc_ray_direction(t_alldata *data, int x);
+void				calc_step_and_sidedist(t_raycasting *ray);
 
 #endif
