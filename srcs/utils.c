@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 01:57:58 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/03 06:25:41 by nassuto          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:31:02 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	ft_free_and_exit(t_alldata *data, char *str)
 	freeptr(data->params.so);
 	freeptr(data->params.we);
 	ft_destroy_mlx(&data->mlx);
-	freeptr(data->mlx.init);
+	/* mlx.init must not be free()d directly; mlx_destroy_display already handled cleanup */
+	(void)data; /* keep signature consistent if data used only for cleanup */
+	freeptr(data->ray);
 	free_double(data->map);
 	free_double(data->copy);
 	exit(1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:06:12 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/03 06:11:18 by nassuto          ###   ########.fr       */
+/*   Updated: 2025/11/03 17:03:39 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_fill_data(t_alldata *data)
 		return (close(data->fd), ft_printf
 			(2, "Error\nverifie the filename for the map\n"), false);
 	data->fd = open(data->filename, O_RDONLY);
-	printf("fd = %d\n", data->fd);
+	// printf("fd = %d\n", data->fd);
 	if (data->fd == -1)
 		return (perror("Error"), false);
 	if (!ft_file_content(data))
