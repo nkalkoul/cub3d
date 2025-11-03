@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:06:12 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/02 17:43:18 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/03 01:37:41 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ int	ft_start_parsing(t_alldata *data)
 
 int	ft_fill_data(t_alldata *data)
 {
+	data->fd = open(data->filename, O_RDONLY | __O_DIRECTORY);
+	if (data->fd >= 0)
+		ft_free_and_exit(data, "the files map is a directory");
 	data->fd = open(data->filename, O_RDONLY);
+	printf("fd = %d\n", data->fd);
 	if (data->fd == -1)
 		return (perror("Error"), false);
 	if (!ft_file_content(data))

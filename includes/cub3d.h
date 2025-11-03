@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/02 19:14:37 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/03 00:53:39 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdbool.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include "../minilibx-linux/mlx.h"
 
 # define HEIGH 1200
 # define WIDTH 900
