@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_tres.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 03:15:53 by nassuto           #+#    #+#             */
-/*   Updated: 2025/11/02 19:17:20 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/03 05:58:20 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ int	get_color(t_color c)
 
 char	*ft_skip(char *str, char c)
 {
-	int	i;
-
-	i = 0;
 	while (str && *str == c)
 		str++;
 	return (str);

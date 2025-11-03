@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 20:59:59 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/30 03:07:18 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/03 06:14:50 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	main(int ac, char **av)
 	if (!ft_start_parsing(&data))
 		return (1);
 	ft_parse_map(&data);
+	ft_init_mlx(&data);
 	ft_free_and_exit(&data, NULL);
 }

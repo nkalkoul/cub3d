@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_bis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 06:00:41 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/10/28 19:42:22 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/03 05:57:35 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@
 
 void	ft_fill_color(char *str, t_alldata *data)
 {
-	int		i;
 	char	symbol;
 
 	symbol = str[0];
-	i = 0;
 	if (!ft_isspace(str[1]))
 		return (ft_free_and_exit(data, "Bad indentation in color def"));
 	str = &str[1];

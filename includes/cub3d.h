@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/03 00:53:39 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/03 06:14:25 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,9 @@ int		mini_comp(char *str, char a, char b);
 int		mini_len(char *str, char c);
 int		is_validcara(char c);
 int		get_color(t_color c);
+
+//--------------MLX & EXEC-----------------
+
+void	ft_init_mlx(t_alldata *data);
 
 #endif

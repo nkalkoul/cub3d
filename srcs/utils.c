@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 01:57:58 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/03 00:57:32 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/03 06:25:41 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_free_and_exit(t_alldata *data, char *str)
 	freeptr(data->params.no);
 	freeptr(data->params.so);
 	freeptr(data->params.we);
+	ft_destroy_mlx(&data->mlx);
 	freeptr(data->mlx.init);
 	free_double(data->map);
 	free_double(data->copy);

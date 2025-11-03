@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsingmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 21:22:50 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/02 19:04:27 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/03 05:57:47 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 void	ft_max_height(t_alldata *data)
 {
 	int		i;
-	int		j;
 	int		count;
 	char	**map;
 
 	map = data->map;
 	i = 0;
-	j = 0;
 	count = 0;
 	while (map[i])
 	{

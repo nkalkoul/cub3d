@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:06:12 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/03 01:37:41 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/03 06:11:18 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	ft_fill_data(t_alldata *data)
 {
 	data->fd = open(data->filename, O_RDONLY | __O_DIRECTORY);
 	if (data->fd >= 0)
-		ft_free_and_exit(data, "the files map is a directory");
+		return (close(data->fd), ft_printf
+			(2, "Error\nverifie the filename for the map\n"), false);
 	data->fd = open(data->filename, O_RDONLY);
 	printf("fd = %d\n", data->fd);
 	if (data->fd == -1)
@@ -55,6 +56,8 @@ int	ft_file_content(t_alldata *data)
 	char	*content;
 
 	content = ft_strdup("");
+	if (!content)
+		return (close(data->fd), false);
 	line = get_next_line(data->fd);
 	while (line)
 	{
@@ -102,11 +105,9 @@ void	putmap(t_alldata *data, char *str)
 void	ft_parse_content(t_alldata *data)
 {
 	int		i;
-	int		o;
 	char	*str;
 
 	i = 0;
-	o = 0;
 	str = data->filecontent;
 	while (str && i < 6)
 	{
@@ -119,13 +120,8 @@ void	ft_parse_content(t_alldata *data)
 			str++;
 		i++;
 	}
-	printf("%#010x, %#010x\n\n", data->params.ceiling.final_color,
-		data->params.floor.final_color);
-	printf("\n texture = == |%s|, |%s|, |%s|, |%s|\n", data->params.ea, data->params.no,
-		data->params.so, data->params.we);
 	str = ft_skip(str, '\n');
 	putmap(data, str);
 	if (!data->map)
 		ft_free_and_exit(data, "map error copy");
-	i = 0;
 }

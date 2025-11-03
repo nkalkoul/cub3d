@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsingmap_bis.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 06:37:01 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/02 17:34:31 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2025/11/03 05:58:03 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,10 @@ void	ft_affichemap(t_alldata *data)
 
 void	ft_checkopen(t_alldata *data)
 {
-	int	i;
 
-	i = 0;
 	ft_copymap(data);
 	ft_affichemap(data);
 	ft_floodfill(data, 0, 0);
-	i = 0;
 	if (data->count != 0)
 		ft_free_and_exit(data, "map is open");
 }
