@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 06:37:01 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/03 17:01:08 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/04 16:28:38 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	ft_floodfill(t_alldata *data, int x, int y)
 	if (x > data->max_width + 1 || y > data->max_height + 1
 		|| x < 0 || y < 0)
 		return ;
-	if (data->copy[y][x] == '1' || data->copy[y][x] == 'o')
+	if (data->copy[y][x] == '1' || data->copy[y][x] == '2')
 		return ;
 	if (data->copy[y][x] == '0')
 	{
 		data->count += 1;
 		return ;
 	}
-	data->copy[y][x] = 'o';
+	data->copy[y][x] = '2';
 	ft_floodfill(data, x + 1, y);
 	ft_floodfill(data, x - 1, y);
 	ft_floodfill(data, x, y + 1);
@@ -66,7 +66,7 @@ void	ft_copymap(t_alldata *data)
 		ft_carre(data->copy[i + 1], data->map[i]);
 }
 
-void	ft_affichemap(t_alldata *data)
+void	ft_map(t_alldata *data)
 {
 	int	i;
 

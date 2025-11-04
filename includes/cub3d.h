@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/03 19:36:01 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/04 17:00:46 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ typedef struct s_raycasting
 	// time
 	double			time;
 	double			oldTime;
+	double			frameTime;
+	// movement speed
+	double			moveSpeed;
+	double			rotSpeed;
 	// raycasting variables
 	int				mapX;
 	int				mapY;
@@ -147,8 +151,14 @@ void				ft_start_mlx(t_alldata *data);
 int					exec_general(t_alldata *data);
 void				init_raycasting(t_alldata *data);
 void				init_ray(t_alldata *data);
+void				calc_step_and_sidedist(t_raycasting *ray);
+void				perform_dda(t_alldata *data);
 int					render(t_alldata *data);
 t_vector			calc_ray_direction(t_alldata *data, int x);
 void				calc_step_and_sidedist(t_raycasting *ray);
+void				perform_dda(t_alldata *data);
+void				calculate_perp_wall_dist(t_alldata *data);
+void				render_column(t_alldata *data, int x);
+void				init_raycasting(t_alldata *data);
 
 #endif
