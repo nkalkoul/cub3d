@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils_tres.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 03:15:53 by nassuto           #+#    #+#             */
-/*   Updated: 2025/11/03 05:58:20 by nassuto          ###   ########.fr       */
+/*   Updated: 2025/11/04 19:51:19 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	get_color(t_color c)
+int get_color(t_color c)
 {
-	return (0xFF000000 | (c.b << 16) | (c.g << 8) | c.r);
+	return ((c.r & 0xFF) << 16)
+		 | ((c.g & 0xFF) << 8)
+		 |  (c.b & 0xFF);
 }
 
 char	*ft_skip(char *str, char c)
@@ -40,4 +42,17 @@ int	mini_comp(char *str, char a, char b)
 	if (str[0] == a && str[1] == b)
 		return (true);
 	return (false);
+}
+
+int	get_time(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+}
+
+void	ft_close(t_alldata *data)
+{
+	ft_free_and_exit(data, NULL);
 }

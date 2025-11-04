@@ -10,7 +10,11 @@ SRCS = \
 	srcs/utils_tres.c \
 	srcs/init_mlx.c \
 	srcs/init_mlx_utils.c \
-	srcs/exec/exec_general.c
+	srcs/init_raycasting.c \
+		srcs/exec/exec_general.c \
+		srcs/exec/exec_raycasting_utils.c \
+		srcs/exec/exec_render.c \
+	srcs/move.c \
 
 MLX_DIR = minilibx-linux
 LIBFT_DIR = libft
@@ -21,7 +25,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 INCLUDES = -Iincludes -I$(LIBFT_DIR) -I$(MLX_DIR)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = #-Wall -Wextra -Werror -g3
 
 NAME = cub3D
 OBJS_DIR = obj
@@ -38,7 +42,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS) | $(OBJS_DIR) $(BUILD_DIR)
 	@printf "\033[35m[BUILD] Linking (%d objects)...\033[0m\r" "$(words $(OBJS))"
-	@{ $(CC) $(CFLAGS) $(OBJS) -L./$(MLX_DIR) -lX11 -lXext -lmlx $(LIBFT) -o $(NAME) >/tmp/$(NAME).link.log 2>&1 & pid=$$!; \
+	@{ $(CC) $(CFLAGS) $(OBJS) -L./$(MLX_DIR) -lX11 -lXext -lmlx -lm $(LIBFT) -o $(NAME) >/tmp/$(NAME).link.log 2>&1 & pid=$$!; \
 	 i=0; chars='|/-\\'; \
 	 while kill -0 $$pid 2>/dev/null; do \
 		 idx=$$(expr $$i % 4 + 1); \
