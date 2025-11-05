@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 01:57:58 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/05 14:34:26 by nassuto          ###   ########.fr       */
+/*   Updated: 2025/11/05 23:28:14 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,3 @@ void	ft_free_and_exit(t_alldata *data, char *str)
 	ft_memset(data, 0, sizeof(data));
 	exit(1);
 }
-// valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes \
-  --suppressions=/usr/lib/valgrind/debian.supp \
-  --suppressions=./mlx.supp \
-  ./cub3D map/map.cub

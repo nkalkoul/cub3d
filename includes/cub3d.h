@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/04 19:45:41 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/05 23:31:59 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,8 +202,38 @@ void				calculate_perp_wall_dist(t_alldata *data);
 void				render_column(t_alldata *data, int x);
 void				update_player(t_alldata *data);
 int 				get_time(void);
-void				ft_close(t_alldata *data);
+int				ft_close(t_alldata *data);
 void				init_keyhooks(t_alldata *data);
+int			ft_key_press(int keycode, t_alldata *data);
+int			ft_key_release(int keycode, t_alldata *data);
+
+typedef struct s_bounds
+{
+	int	line_height;
+	int	draw_start;
+	int	draw_end;
+}
+t_bounds;
+
+typedef struct s_tex_info
+{
+	char	*addr;
+	int	bpp;
+	int	line_len;
+	int	w;
+	int	h;
+	int	tex_x;
+	double	step;
+	double	tex_pos;
+}
+t_tex_info;
+
+t_tex_info	get_tex_meta(t_alldata *data, char wall_side);
+t_bounds	calc_bounds(t_alldata *data);
+char		choose_wall_side_local(t_alldata *data);
+void		compute_tex_x(t_alldata *data, t_tex_info *t);
+void		draw_textured_column(t_alldata *data, int x, t_bounds *b,
+ 						 t_tex_info *t);
 
 // --------------MOVEMENT-----------------
 void				ft_move(t_alldata *data);

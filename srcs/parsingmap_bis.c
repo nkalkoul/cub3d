@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsingmap_bis.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 06:37:01 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/05 13:56:49 by nassuto          ###   ########.fr       */
+/*   Updated: 2025/11/05 23:27:57 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	ft_floodfill(t_alldata *data, int x, int y)
 {
-	if (x > data->max_width + 1 || y > data->max_height + 1
-		|| x < 0 || y < 0)
+	if (x > data->max_width + 1 || y > data->max_height + 1 || x < 0 || y < 0)
 		return ;
 	if (data->copy[y][x] == '1' || data->copy[y][x] == '2')
 		return ;
@@ -68,7 +67,6 @@ void	ft_copymap(t_alldata *data)
 
 void	ft_checkopen(t_alldata *data)
 {
-
 	ft_copymap(data);
 	ft_floodfill(data, 0, 0);
 	if (data->count != 0)

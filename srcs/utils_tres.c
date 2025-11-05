@@ -6,17 +6,15 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 03:15:53 by nassuto           #+#    #+#             */
-/*   Updated: 2025/11/04 19:51:19 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/05 22:49:34 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int get_color(t_color c)
+int	get_color(t_color c)
 {
-	return ((c.r & 0xFF) << 16)
-		 | ((c.g & 0xFF) << 8)
-		 |  (c.b & 0xFF);
+	return (((c.r & 0xFF) << 16) | ((c.g & 0xFF) << 8) | (c.b & 0xFF));
 }
 
 char	*ft_skip(char *str, char c)
@@ -50,9 +48,4 @@ int	get_time(void)
 
 	gettimeofday(&tv, NULL);
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
-}
-
-void	ft_close(t_alldata *data)
-{
-	ft_free_and_exit(data, NULL);
 }
