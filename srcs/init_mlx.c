@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 18:55:54 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/04 21:33:19 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/05 14:32:08 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	ft_put_pixel(t_mlx *mlx, int x, int y, int color)
 
 void	ft_key_press(int keycode, t_alldata *data)
 {
-	printf("[KEY_PRESS] keycode=%d\n", keycode);
 	if (keycode == XK_Escape)
 		ft_close(data);
 	if (keycode == XK_w)
@@ -99,7 +98,6 @@ void	ft_key_press(int keycode, t_alldata *data)
 
 void ft_key_release(int keycode, t_alldata *data)
 {
-	printf("[KEY_RELEASE] keycode=%d\n", keycode);
 	if (keycode == XK_w)
 		data->keyhooks.w = false;
 	if (keycode == XK_s)

@@ -6,7 +6,7 @@
 /*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 21:22:50 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/03 05:57:47 by nassuto          ###   ########.fr       */
+/*   Updated: 2025/11/05 14:11:27 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,19 @@ void	ft_max_height(t_alldata *data)
 	data->max_width = count;
 }
 
-int	ft_checkstring(t_alldata *data, int i)
+int	ft_checkstring(t_alldata *data, int i, char *start)
 {
+	int		j;
+
 	if (data->map[i][0] == '\n')
 		return (false);
+	j = 0;
+	while (data->map[i][j])
+	{
+		if (!ft_strchr(start, data->map[i][j]))
+			return (false);
+		j++;
+	}
 	return (true);
 }
 
@@ -68,20 +77,26 @@ void	ft_check_cara(t_alldata *data)
 {
 	int		i;
 	char	*start;
+	char	*pars;
 
 	i = 0;
+	pars = ft_strdup("10 NESW");
 	start = ft_strdup("NESW");
+	if (!pars || !start)
+		return (ft_free_and_exit(data, "Malloc error"));
 	i = 0;
 	while (data->map[i])
 	{
-		if (!ft_checkstring(data, i) || !ft_checkstring2(data, i, start))
+		if (!ft_checkstring(data, i, pars) || !ft_checkstring2(data, i, start))
 		{
 			free(start);
+			free(pars);
 			ft_free_and_exit(data, "wrong char in map");
 		}
 		i++;
 	}
 	free(start);
+	free(pars);
 	if (data->count != 1)
 		ft_free_and_exit(data, "Wrong player number, its must be one");
 	data->count = 0;

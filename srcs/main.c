@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 20:59:59 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/04 18:02:05 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/05 13:52:23 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,6 @@ int	main(int ac, char **av)
 	if (!ft_start_parsing(&data))
 		return (1);
 	ft_parse_map(&data);
-	// int i = 0;
-	// while (data.copy[i])
-	// {
-	// 	printf("%s\n", data.copy[i]);
-	// 	i++;
-	// }
 	init_keyhooks(&data);
 	init_raycasting(&data);
 	ft_start_mlx(&data);

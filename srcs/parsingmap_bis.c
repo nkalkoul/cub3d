@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsingmap_bis.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 06:37:01 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/04 16:28:38 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/05 13:56:49 by nassuto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,30 +66,10 @@ void	ft_copymap(t_alldata *data)
 		ft_carre(data->copy[i + 1], data->map[i]);
 }
 
-void	ft_map(t_alldata *data)
-{
-	int	i;
-
-	i = 0;
-	while (data->map[i])
-	{
-		printf("@@%s@@\n", data->map[i]);
-		i++;
-	}
-	i = 0;
-	printf("\ncopy == \n");
-	while (data->copy[i])
-	{
-		printf("$%s$\n", data->copy[i]);
-		i++;
-	}
-}
-
 void	ft_checkopen(t_alldata *data)
 {
 
 	ft_copymap(data);
-	// ft_affichemap(data);
 	ft_floodfill(data, 0, 0);
 	if (data->count != 0)
 		ft_free_and_exit(data, "map is open");
