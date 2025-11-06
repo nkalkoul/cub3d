@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_bis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 06:00:41 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/03 05:57:35 by nassuto          ###   ########.fr       */
+/*   Updated: 2025/11/06 21:08:00 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,31 @@ void	ft_fill_color(char *str, t_alldata *data)
 		return (ft_free_and_exit(data,
 				"Color format must be between 0,0,0 and 255,255,255"));
 	ft_check_formatc(str, data);
-	if (symbol == 'C')
+	if (symbol == 'C' && !data->params.ceiling.r && !data->params.ceiling.g
+		&& !data->params.ceiling.b)
 		ft_fill_ceiling(str, data);
-	else
+	else if (symbol == 'F' && !data->params.floor.r && !data->params.floor.g
+		&& !data->params.floor.b)
 		ft_fill_floor(str, data);
+	else
+		ft_free_and_exit(data, "Duplicate color definition");
 }
 
 //remplir la struct param des path des texture
 
 void	ft_fill_texturefile_param(char *str, t_alldata *data, int s)
 {
-	if (s == 1)
+	if (s == 1 && !data->params.no)
 		data->params.no = ft_substr(str, 0, mini_len(str, '\n'));
-	else if (s == 2)
+	else if (s == 2 && !data->params.we)
 		data->params.we = ft_substr(str, 0, mini_len(str, '\n'));
-	else if (s == 3)
+	else if (s == 3 && !data->params.so)
 		data->params.so = ft_substr(str, 0, mini_len(str, '\n'));
-	else if (s == 4)
+	else if (s == 4 && !data->params.ea)
 		data->params.ea = ft_substr(str, 0, mini_len(str, '\n'));
+	else
+		ft_free_and_exit(data, "Duplicate texture file definition");
 }
-
-// un debut de verif si le path est qlq peu correct
 
 void	ft_check_texture(char *str, t_alldata *data)
 {
@@ -78,8 +82,6 @@ void	ft_check_texture(char *str, t_alldata *data)
 	}
 	ft_fill_texturefile_param(str, data, symbol);
 }
-
-//lis mgl c est simple la
 
 void	ft_attribute_params(char *str, t_alldata *data)
 {
