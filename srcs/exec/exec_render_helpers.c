@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 22:40:00 by assistant         #+#    #+#             */
-/*   Updated: 2025/11/05 22:38:11 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/06 18:03:52 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ t_bounds	calc_bounds(t_alldata *data)
 {
 	t_bounds	b;
 
-	if (data->ray.perpWallDist <= 0.0 || !isfinite(data->ray.perpWallDist))
-		data->ray.perpWallDist = 1e-6;
-	b.line_height = (int)(HEIGHT / data->ray.perpWallDist);
+	if (data->ray.perpwalldist <= 0.0 || !isfinite(data->ray.perpwalldist))
+		data->ray.perpwalldist = 1e-6;
+	b.line_height = (int)(HEIGHT / data->ray.perpwalldist);
 	b.draw_start = -b.line_height / 2 + HEIGHT / 2;
 	if (b.draw_start < 0)
 		b.draw_start = 0;
@@ -49,11 +49,11 @@ char	choose_wall_side_local(t_alldata *data)
 {
 	if (data->ray.side == 0)
 	{
-		if (data->ray.stepX > 0)
+		if (data->ray.stepx > 0)
 			return ('W');
 		return ('E');
 	}
-	if (data->ray.stepY > 0)
+	if (data->ray.stepy > 0)
 		return ('N');
 	return ('S');
 }
@@ -63,14 +63,14 @@ void	compute_tex_x(t_alldata *data, t_tex_info *t)
 	double	wall_x;
 
 	if (data->ray.side == 0)
-		wall_x = data->ray.posY + data->ray.perpWallDist * data->ray.dirY;
+		wall_x = data->ray.posy + data->ray.perpwalldist * data->ray.diry;
 	else
-		wall_x = data->ray.posX + data->ray.perpWallDist * data->ray.dirX;
+		wall_x = data->ray.posx + data->ray.perpwalldist * data->ray.dirx;
 	wall_x -= floor(wall_x);
 	t->tex_x = (int)(wall_x * (double)t->w);
-	if (data->ray.side == 0 && data->ray.dirX > 0)
+	if (data->ray.side == 0 && data->ray.dirx > 0)
 		t->tex_x = t->w - t->tex_x - 1;
-	if (data->ray.side == 1 && data->ray.dirY < 0)
+	if (data->ray.side == 1 && data->ray.diry < 0)
 		t->tex_x = t->w - t->tex_x - 1;
 }
 

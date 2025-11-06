@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 22:53:11 by nsmail            #+#    #+#             */
-/*   Updated: 2025/11/05 23:28:40 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/06 18:04:55 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	rotate_left(t_alldata *data)
 	double	oldplanex;
 
 	rotspeed = 0.05;
-	olddirx = data->ray.dirX;
-	data->ray.dirX = data->ray.dirX * cos(rotspeed) - data->ray.dirY
+	olddirx = data->ray.dirx;
+	data->ray.dirx = data->ray.dirx * cos(rotspeed) - data->ray.diry
 		* sin(rotspeed);
-	data->ray.dirY = olddirx * sin(rotspeed) + data->ray.dirY * cos(rotspeed);
-	oldplanex = data->ray.planeX;
-	data->ray.planeX = data->ray.planeX * cos(rotspeed) - data->ray.planeY
+	data->ray.diry = olddirx * sin(rotspeed) + data->ray.diry * cos(rotspeed);
+	oldplanex = data->ray.planex;
+	data->ray.planex = data->ray.planex * cos(rotspeed) - data->ray.planey
 		* sin(rotspeed);
-	data->ray.planeY = oldplanex * sin(rotspeed) + data->ray.planeY
+	data->ray.planey = oldplanex * sin(rotspeed) + data->ray.planey
 		* cos(rotspeed);
 }

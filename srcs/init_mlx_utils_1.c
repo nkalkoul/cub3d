@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 23:30:00 by assistant         #+#    #+#             */
-/*   Updated: 2025/11/05 23:30:26 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/06 17:56:57 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_key_press(int keycode, t_alldata *data)
 		data->keyhooks.left = true;
 	if (keycode == XK_Right)
 		data->keyhooks.right = true;
-    return (0);
+	return (0);
 }
 
 int	ft_key_release(int keycode, t_alldata *data)
@@ -93,5 +93,5 @@ int	ft_key_release(int keycode, t_alldata *data)
 		data->keyhooks.left = false;
 	if (keycode == XK_Right)
 		data->keyhooks.right = false;
-    return (0);
+	return (0);
 }

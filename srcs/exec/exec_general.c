@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 14:53:21 by nsmail            #+#    #+#             */
-/*   Updated: 2025/11/04 21:33:19 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/06 18:02:04 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,17 @@ int	exec_general(t_alldata *data)
 	while (x < WIDTH)
 	{
 		ray = calc_ray_direction(data, x);
-		old_dir_x = data->ray.dirX;
-		old_dir_y = data->ray.dirY;
-		data->ray.dirX = ray.x;
-		data->ray.dirY = ray.y;
+		old_dir_x = data->ray.dirx;
+		old_dir_y = data->ray.diry;
+		data->ray.dirx = ray.x;
+		data->ray.diry = ray.y;
 		init_ray(data);
 		calc_step_and_sidedist(&data->ray);
 		perform_dda(data);
 		calculate_perp_wall_dist(data);
 		render_column(data, x);
-		data->ray.dirX = old_dir_x;
-		data->ray.dirY = old_dir_y;
+		data->ray.dirx = old_dir_x;
+		data->ray.diry = old_dir_y;
 		x++;
 	}
 	return (1);
@@ -70,8 +70,8 @@ t_vector	calc_ray_direction(t_alldata *data, int x)
 	t_vector	ray;
 
 	camera_x = 2.0 * (double)x / (double)WIDTH - 1.0;
-	ray.x = data->ray.dirX + data->ray.planeX * camera_x;
-	ray.y = data->ray.dirY + data->ray.planeY * camera_x;
+	ray.x = data->ray.dirx + data->ray.planex * camera_x;
+	ray.y = data->ray.diry + data->ray.planey * camera_x;
 	return (ray);
 }
 

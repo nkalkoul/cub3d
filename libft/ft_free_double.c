@@ -19,7 +19,7 @@ void	free_double(char **str)
 	i = 0;
 	if (!str)
 		return ;
-	while (str[i] != NULL)
+	while (str && str[i] != NULL)
 	{
 		free(str[i]);
 		i++;

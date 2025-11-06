@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nassuto <nassuto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:06:12 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/05 13:52:35 by nassuto          ###   ########.fr       */
+/*   Updated: 2025/11/06 19:48:37 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,20 +85,11 @@ void	putmap(t_alldata *data, char *str)
 			c++;
 		i++;
 	}
-	i = 0;
 	data->map = malloc(sizeof(char *) * (c + 2));
 	if (!data->map)
 		ft_free_and_exit(data, "Malloc failed");
 	ft_memset(data->map, 0, c + 1);
-	while (i <= c)
-	{
-		if (str[0] == '\n')
-			ft_free_and_exit(data, "empty line in map");
-		data->map[i] = ft_substr(str, 0, mini_len(str, '\n'));
-		str += mini_len(str, '\n') + 1;
-		i++;
-	}
-	data->map[i] = 0;
+	fill_map(data, str, c);
 }
 
 void	ft_parse_content(t_alldata *data)

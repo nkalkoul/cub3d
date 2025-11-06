@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/05 23:31:59 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/06 19:49:19 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,51 +17,45 @@
 # include "../minilibx-linux/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
-# include <sys/time.h>
 # include <math.h>
 # include <stdbool.h>
+# include <sys/time.h>
 
 # define HEIGHT 1080
 # define WIDTH 1920
+
 typedef struct s_mlx
 {
 	void			*init;
 	void			*wind;
-	//
 	void			*n;
 	void			*s;
 	void			*e;
 	void			*w;
-
-	/* cached texture image data (addr/bpp/line_length/endian + size) */
 	char			*n_addr;
-	int			n_bpp;
-	int			n_line_len;
-	int			n_endian;
-	int			n_w;
-	int			n_h;
-
+	int				n_bpp;
+	int				n_line_len;
+	int				n_endian;
+	int				n_w;
+	int				n_h;
 	char			*s_addr;
-	int			s_bpp;
-	int			s_line_len;
-	int			s_endian;
-	int			s_w;
-	int			s_h;
-
+	int				s_bpp;
+	int				s_line_len;
+	int				s_endian;
+	int				s_w;
+	int				s_h;
 	char			*e_addr;
-	int			e_bpp;
-	int			e_line_len;
-	int			e_endian;
-	int			e_w;
-	int			e_h;
-
+	int				e_bpp;
+	int				e_line_len;
+	int				e_endian;
+	int				e_w;
+	int				e_h;
 	char			*w_addr;
-	int			w_bpp;
-	int			w_line_len;
-	int			w_endian;
-	int			w_w;
-	int			w_h;
-	//
+	int				w_bpp;
+	int				w_line_len;
+	int				w_endian;
+	int				w_w;
+	int				w_h;
 	void			*img;
 	char			*addr;
 	int				bits_per_pixel;
@@ -90,7 +84,6 @@ typedef struct s_color
 typedef struct s_params
 {
 	char			*no;
-	// les chemin vers les images en fct de leur direction(mur nor mur sud etc)
 	char			*so;
 	char			*ea;
 	char			*we;
@@ -100,32 +93,28 @@ typedef struct s_params
 
 typedef struct s_raycasting
 {
-	// position of the player
-	double			posX;
-	double			posY;
-	double			dirX;
-	double			dirY;
-	double			origDirX;
-	double			origDirY;
-	double			planeX;
-	double			planeY;
-	// time
+	double			posx;
+	double			posy;
+	double			dirx;
+	double			diry;
+	double			origdirx;
+	double			origdiry;
+	double			planex;
+	double			planey;
 	double			time;
-	double			oldTime;
-	double			frameTime;
-	// movement speed
-	double			moveSpeed;
-	double			rotSpeed;
-	// raycasting variables
-	int				mapX;
-	int				mapY;
-	double			sideDistX;
-	double			sideDistY;
-	double			deltaDistX;
-	double			deltaDistY;
-	double			perpWallDist;
-	int				stepX;
-	int				stepY;
+	double			oldtime;
+	double			frametime;
+	double			movespeed;
+	double			rotspeed;
+	int				mapx;
+	int				mapy;
+	double			sidedistx;
+	double			sidedisty;
+	double			deltadistx;
+	double			deltadisty;
+	double			perpwalldist;
+	int				stepx;
+	int				stepy;
 	int				hit;
 	int				side;
 }					t_raycasting;
@@ -143,17 +132,36 @@ typedef struct s_alldata
 	char			*filecontent;
 	char			**map;
 	char			**copy;
-	int py;   // position y du joueur (map[y][x])
-	int px;   // position x du joueur
-	char dir; // N S E ou W
+	int				py;
+	int				px;
+	char			dir;
 	int				count;
 	int				max_height;
 	int				max_width;
 	t_mlx			mlx;
 	t_keyhooks		keyhooks;
-	t_params params; // parametre (couleur r,g,b et image)
+	t_params		params;
 	t_raycasting	ray;
 }					t_alldata;
+
+typedef struct s_bounds
+{
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
+}					t_bounds;
+
+typedef struct s_tex_info
+{
+	char			*addr;
+	int				bpp;
+	int				line_len;
+	int				w;
+	int				h;
+	int				tex_x;
+	double			step;
+	double			tex_pos;
+}					t_tex_info;
 
 // -------------PARSING------------------
 
@@ -181,6 +189,7 @@ int					mini_comp(char *str, char a, char b);
 int					mini_len(char *str, char c);
 int					is_validcara(char c);
 int					get_color(t_color c);
+void 				fill_map(t_alldata *data, char *str, int c);
 
 //--------------MLX & EXEC-----------------
 
@@ -201,39 +210,18 @@ void				perform_dda(t_alldata *data);
 void				calculate_perp_wall_dist(t_alldata *data);
 void				render_column(t_alldata *data, int x);
 void				update_player(t_alldata *data);
-int 				get_time(void);
-int				ft_close(t_alldata *data);
+int					get_time(void);
+int					ft_close(t_alldata *data);
 void				init_keyhooks(t_alldata *data);
-int			ft_key_press(int keycode, t_alldata *data);
-int			ft_key_release(int keycode, t_alldata *data);
+int					ft_key_press(int keycode, t_alldata *data);
+int					ft_key_release(int keycode, t_alldata *data);
 
-typedef struct s_bounds
-{
-	int	line_height;
-	int	draw_start;
-	int	draw_end;
-}
-t_bounds;
-
-typedef struct s_tex_info
-{
-	char	*addr;
-	int	bpp;
-	int	line_len;
-	int	w;
-	int	h;
-	int	tex_x;
-	double	step;
-	double	tex_pos;
-}
-t_tex_info;
-
-t_tex_info	get_tex_meta(t_alldata *data, char wall_side);
-t_bounds	calc_bounds(t_alldata *data);
-char		choose_wall_side_local(t_alldata *data);
-void		compute_tex_x(t_alldata *data, t_tex_info *t);
-void		draw_textured_column(t_alldata *data, int x, t_bounds *b,
- 						 t_tex_info *t);
+t_tex_info			get_tex_meta(t_alldata *data, char wall_side);
+t_bounds			calc_bounds(t_alldata *data);
+char				choose_wall_side_local(t_alldata *data);
+void				compute_tex_x(t_alldata *data, t_tex_info *t);
+void				draw_textured_column(t_alldata *data, int x, t_bounds *b,
+						t_tex_info *t);
 
 // --------------MOVEMENT-----------------
 void				ft_move(t_alldata *data);

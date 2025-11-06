@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 15:59:30 by nsmail            #+#    #+#             */
-/*   Updated: 2025/11/05 23:27:34 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/06 18:01:00 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ void	init_direction_norm(t_alldata *data)
 {
 	if (data->dir == 'E')
 	{
-		data->ray.dirX = 1;
-		data->ray.dirY = 0;
-		data->ray.planeX = 0;
-		data->ray.planeY = 0.66;
+		data->ray.dirx = 1;
+		data->ray.diry = 0;
+		data->ray.planex = 0;
+		data->ray.planey = 0.66;
 	}
 	else if (data->dir == 'W')
 	{
-		data->ray.dirX = -1;
-		data->ray.dirY = 0;
-		data->ray.planeX = 0;
-		data->ray.planeY = -0.66;
+		data->ray.dirx = -1;
+		data->ray.diry = 0;
+		data->ray.planex = 0;
+		data->ray.planey = -0.66;
 	}
 }
 
@@ -59,17 +59,17 @@ void	init_direction(t_alldata *data)
 {
 	if (data->dir == 'N')
 	{
-		data->ray.dirX = 0;
-		data->ray.dirY = -1;
-		data->ray.planeX = 0.66;
-		data->ray.planeY = 0;
+		data->ray.dirx = 0;
+		data->ray.diry = -1;
+		data->ray.planex = 0.66;
+		data->ray.planey = 0;
 	}
 	else if (data->dir == 'S')
 	{
-		data->ray.dirX = 0;
-		data->ray.dirY = 1;
-		data->ray.planeX = -0.66;
-		data->ray.planeY = 0;
+		data->ray.dirx = 0;
+		data->ray.diry = 1;
+		data->ray.planex = -0.66;
+		data->ray.planey = 0;
 	}
 	init_direction_norm(data);
 }

@@ -1,11 +1,12 @@
 #!/bin/sh
-# Usage: compile_and_report.sh <CC> <CFLAGS> <SRC> <OUT> <TOTAL> <BUILD_DIR>
+# Usage: compile_and_report.sh <CC> <CFLAGS> <SRC> <OUT> <TOTAL> [BUILD_DIR]
 CC="$1"
 CFLAGS="$2"
 SRC="$3"
 OUT="$4"
 TOTAL="$5"
-BUILD_DIR="$6"
+# optional build dir used for a progress counter; default to /tmp if not provided
+BUILD_DIR="${6:-/tmp}"
 
 mkdir -p "$(dirname "$OUT")"
 
@@ -17,7 +18,7 @@ if ! $CC $CFLAGS -c "$SRC" -o "$OUT" >/tmp/compile.log 2>&1; then
 fi
 
 # update counter
-count_file="$BUILD_DIR/count"
+count_file="$BUILD_DIR/cub3d_build_count"
 if [ ! -f "$count_file" ]; then
     echo 0 > "$count_file"
 fi

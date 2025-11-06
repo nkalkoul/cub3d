@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 20:00:00 by assistant         #+#    #+#             */
-/*   Updated: 2025/11/04 21:34:53 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/06 18:02:55 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,46 @@
 
 void	init_ray(t_alldata *data)
 {
-	data->ray.mapX = (int)data->ray.posX;
-	data->ray.mapY = (int)data->ray.posY;
-	if (data->ray.dirX == 0.0)
-		data->ray.deltaDistX = 1e30;
+	data->ray.mapx = (int)data->ray.posx;
+	data->ray.mapy = (int)data->ray.posy;
+	if (data->ray.dirx == 0.0)
+		data->ray.deltadistx = 1e30;
 	else
-		data->ray.deltaDistX = fabs(1.0 / data->ray.dirX);
-	if (data->ray.dirY == 0.0)
-		data->ray.deltaDistY = 1e30;
+		data->ray.deltadistx = fabs(1.0 / data->ray.dirx);
+	if (data->ray.diry == 0.0)
+		data->ray.deltadisty = 1e30;
 	else
-		data->ray.deltaDistY = fabs(1.0 / data->ray.dirY);
+		data->ray.deltadisty = fabs(1.0 / data->ray.diry);
 	data->ray.hit = 0;
 	data->ray.side = 0;
-	data->ray.stepX = 0;
-	data->ray.stepY = 0;
-	data->ray.sideDistX = 0.0;
-	data->ray.sideDistY = 0.0;
-	data->ray.perpWallDist = 0.0;
+	data->ray.stepx = 0;
+	data->ray.stepy = 0;
+	data->ray.sidedistx = 0.0;
+	data->ray.sidedisty = 0.0;
+	data->ray.perpwalldist = 0.0;
 }
 
 void	calc_step_and_sidedist(t_raycasting *ray)
 {
-	if (ray->dirX < 0)
+	if (ray->dirx < 0)
 	{
-		ray->stepX = -1;
-		ray->sideDistX = (ray->posX - ray->mapX) * ray->deltaDistX;
+		ray->stepx = -1;
+		ray->sidedistx = (ray->posx - ray->mapx) * ray->deltadistx;
 	}
 	else
 	{
-		ray->stepX = 1;
-		ray->sideDistX = (ray->mapX + 1.0 - ray->posX) * ray->deltaDistX;
+		ray->stepx = 1;
+		ray->sidedistx = (ray->mapx + 1.0 - ray->posx) * ray->deltadistx;
 	}
-	if (ray->dirY < 0)
+	if (ray->diry < 0)
 	{
-		ray->stepY = -1;
-		ray->sideDistY = (ray->posY - ray->mapY) * ray->deltaDistY;
+		ray->stepy = -1;
+		ray->sidedisty = (ray->posy - ray->mapy) * ray->deltadisty;
 	}
 	else
 	{
-		ray->stepY = 1;
-		ray->sideDistY = (ray->mapY + 1.0 - ray->posY) * ray->deltaDistY;
+		ray->stepy = 1;
+		ray->sidedisty = (ray->mapy + 1.0 - ray->posy) * ray->deltadisty;
 	}
 }
 
@@ -61,19 +61,19 @@ void	perform_dda(t_alldata *data)
 {
 	while (data->ray.hit == 0)
 	{
-		if (data->ray.sideDistX < data->ray.sideDistY)
+		if (data->ray.sidedistx < data->ray.sidedisty)
 		{
-			data->ray.sideDistX += data->ray.deltaDistX;
-			data->ray.mapX += data->ray.stepX;
+			data->ray.sidedistx += data->ray.deltadistx;
+			data->ray.mapx += data->ray.stepx;
 			data->ray.side = 0;
 		}
 		else
 		{
-			data->ray.sideDistY += data->ray.deltaDistY;
-			data->ray.mapY += data->ray.stepY;
+			data->ray.sidedisty += data->ray.deltadisty;
+			data->ray.mapy += data->ray.stepy;
 			data->ray.side = 1;
 		}
-		if (data->map[data->ray.mapY][data->ray.mapX] == '1')
+		if (data->map[data->ray.mapy][data->ray.mapx] == '1')
 			data->ray.hit = 1;
 	}
 }
@@ -81,7 +81,7 @@ void	perform_dda(t_alldata *data)
 void	calculate_perp_wall_dist(t_alldata *data)
 {
 	if (data->ray.side == 0)
-		data->ray.perpWallDist = (data->ray.sideDistX - data->ray.deltaDistX);
+		data->ray.perpwalldist = (data->ray.sidedistx - data->ray.deltadistx);
 	else
-		data->ray.perpWallDist = (data->ray.sideDistY - data->ray.deltaDistY);
+		data->ray.perpwalldist = (data->ray.sidedisty - data->ray.deltadisty);
 }
