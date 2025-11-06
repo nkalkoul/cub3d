@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:03:39 by nkalkoul          #+#    #+#             */
-/*   Updated: 2025/11/06 19:49:19 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/06 19:59:53 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,7 @@ int					mini_comp(char *str, char a, char b);
 int					mini_len(char *str, char c);
 int					is_validcara(char c);
 int					get_color(t_color c);
-void 				fill_map(t_alldata *data, char *str, int c);
+void				fill_map(t_alldata *data, char *str, int c);
 
 //--------------MLX & EXEC-----------------
 

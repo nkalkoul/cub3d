@@ -6,7 +6,7 @@
 /*   By: nsmail <nsmail@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 22:47:14 by nsmail            #+#    #+#             */
-/*   Updated: 2025/11/06 19:48:24 by nsmail           ###   ########.fr       */
+/*   Updated: 2025/11/06 19:59:22 by nsmail           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ int	ft_close(t_alldata *data)
 	ft_free_and_exit(data, NULL);
 	return (0);
 }
+
 void	fill_map(t_alldata *data, char *str, int c)
 {
 	int	i;
 
 	i = 0;
-while (i <= c)
+	while (i <= c)
 	{
 		if (str[0] == '\n')
 		{
