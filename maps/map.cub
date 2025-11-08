@@ -1,8 +1,8 @@
 NO ./texture/nord-_1_.xpm
-F	250,145,145
+C	250,145,145
 SO ./texture/sud-_1_.xpm
 WE ./texture/west-_1_.xpm
-C	135,135,139
+F	135,135,139
 EA ./texture/east-_1_.xpm
 
     1111111111111111111111111                       
